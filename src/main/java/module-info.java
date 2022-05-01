@@ -6,6 +6,7 @@ module ky.fex.discordbotinterface {
     requires java.net.http;
     requires org.json;
 
+    opens ky.fex.discordbotinterface.guis to javafx.fxml;
     opens ky.fex.discordbotinterface to javafx.fxml;
     exports ky.fex.discordbotinterface;
 }

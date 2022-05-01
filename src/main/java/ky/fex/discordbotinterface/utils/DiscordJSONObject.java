@@ -11,14 +11,11 @@ import java.net.http.HttpResponse;
 public class DiscordJSONObject {
     public static String baseLink="https://discord.com/api/";
 
-    public static Object get(String id) throws NoSuchFieldException, InstantiationException, IllegalAccessException {
-        var thisClass=MethodHandles.lookup().lookupClass();
-
-        HttpResponse response = new DiscordHTTPRequest(thisClass.getField("baseLink")+id).sendRequest(DiscordHTTPRequest.postMethod.GET);
+    public DiscordJSONObject(String id){
+        HttpResponse response = new DiscordHTTPRequest(baseLink+id).sendRequest(DiscordHTTPRequest.postMethod.GET);
         var responseParsed = new JSONObject(response.body().toString());
-        var objToReturn= thisClass.newInstance();
 
-        var fields = thisClass.getDeclaredFields();
+        var fields = this.getClass().getDeclaredFields();
         for(Field field : fields){
             try {
                 Object getFromJson = null;
@@ -26,10 +23,8 @@ public class DiscordJSONObject {
                     getFromJson=responseParsed.get(field.getName());
                 }catch(JSONException ignored){}
 
-                field.set(objToReturn, getFromJson);
+                field.set(this, getFromJson);
             } catch(IllegalArgumentException | IllegalAccessException ignored){}
         }
-
-        return objToReturn;
     }
 }

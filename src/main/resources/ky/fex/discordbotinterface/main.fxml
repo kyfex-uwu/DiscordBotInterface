@@ -7,12 +7,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ky.fex.discordbotinterface.HelloController">
+      fx:controller="ky.fex.discordbotinterface.guis.MainGUI">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
     <Label fx:id="lastMessage"/>
     <Button text="Send!" onAction="#onSend"/>
-    <TextField fx:id="messageField" layoutX="115.0" layoutY="28.0" />
+    <TextField fx:id="messageField" onKeyReleased="#keyReleased" layoutX="115.0" layoutY="28.0" />
 </VBox>
