@@ -1,5 +1,6 @@
 package ky.fex.discordbotinterface.discord;
 
+import ky.fex.discordbotinterface.DBIConstants;
 import ky.fex.discordbotinterface.utils.DiscordJSONObject;
 
 public class User extends DiscordJSONObject {
@@ -19,7 +20,14 @@ public class User extends DiscordJSONObject {
     public int premium_type=0;
     public int public_flags=0;
 
-    public User(String id) {
-        super(id);
+    public User(String linkPart) {
+        super("users/"+linkPart);
+        if(linkPart.equals("@me")){
+            DBIConstants.properties.setProperty("botName",this.username);
+        }
+    }
+
+    public Channel[] getChannels(){
+        return new Channel[0];
     }
 }

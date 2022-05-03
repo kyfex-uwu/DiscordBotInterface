@@ -5,11 +5,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import ky.fex.discordbotinterface.DBIConstants;
 import ky.fex.discordbotinterface.utils.DiscordHTTPRequest;
 
 public class MainGUI {
     @FXML
     private TextField messageField;
+
+    @FXML
+    protected void initialize(){
+        DBIConstants.thisUser.getChannels();
+    }
 
     @FXML
     protected void keyReleased(KeyEvent key){

@@ -13,7 +13,7 @@ public class DiscordHTTPRequest {
 
     public DiscordHTTPRequest(URI link){
         request=HttpRequest.newBuilder(link)
-                .header("Authorization","Bot "+ DBIConstants.getBotID())
+                .header("Authorization","Bot "+ DBIConstants.thisToken)
                 .header("User-Agent","ungaBungaTestBot (http://some.url, v0.0)")
                 .header("Content-Type","application/json");
     }

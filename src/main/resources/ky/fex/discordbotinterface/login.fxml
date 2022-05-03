@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -15,12 +14,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="botID" onKeyReleased="#keyReleased" promptText="Bot ID">
+            <TextField fx:id="botToken" onKeyReleased="#keyReleased" promptText="Bot ID">
                <VBox.margin>
                   <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#attemptPrevSession" text="Previous Session" />
+            <Button fx:id="prevSessionButton" mnemonicParsing="false" onAction="#attemptPrevSession" text="Button" />
          </children>
       </VBox>
    </center>

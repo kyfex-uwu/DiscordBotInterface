@@ -1,2 +1,4 @@
-package ky.fex.discordbotinterface.discord;public class Channel {
+package ky.fex.discordbotinterface.discord;
+
+public class Channel {
 }

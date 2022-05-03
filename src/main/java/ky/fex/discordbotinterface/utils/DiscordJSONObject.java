@@ -1,19 +1,19 @@
 package ky.fex.discordbotinterface.utils;
 
-import ky.fex.discordbotinterface.discord.User;
+import ky.fex.discordbotinterface.DBIConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
-import java.lang.invoke.MethodHandles;
 import java.net.http.HttpResponse;
 
 public class DiscordJSONObject {
     public static String baseLink="https://discord.com/api/";
 
-    public DiscordJSONObject(String id){
-        HttpResponse response = new DiscordHTTPRequest(baseLink+id).sendRequest(DiscordHTTPRequest.postMethod.GET);
+    public DiscordJSONObject(String linkPart){
+        HttpResponse response = new DiscordHTTPRequest(baseLink+linkPart).sendRequest(DiscordHTTPRequest.postMethod.GET);
         var responseParsed = new JSONObject(response.body().toString());
+        DBIConstants.rateLimitHandler.updateRates(response.statusCode(),response.headers());
 
         var fields = this.getClass().getDeclaredFields();
         for(Field field : fields){
