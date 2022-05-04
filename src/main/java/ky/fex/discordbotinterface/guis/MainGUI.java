@@ -16,6 +16,7 @@ public class MainGUI {
     @FXML
     protected void initialize(){
         var guilds = DBIConstants.thisUser.getGuilds();
+
         for(Guild guild : guilds){
             System.out.println(guild.name);
         }
