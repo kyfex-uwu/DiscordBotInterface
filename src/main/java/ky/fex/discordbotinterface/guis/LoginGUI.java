@@ -45,7 +45,7 @@ public class LoginGUI {
 
     private void login(String botToken) throws IOException {
         DBIConstants.thisToken=botToken;
-        DBIConstants.thisUser=new User("@me");
+        DBIConstants.thisUser=new User("users/@me");
         DBIConstants.properties.setProperty("botToken",botToken);
         DBIConstants.changeScene("main.fxml");
     }

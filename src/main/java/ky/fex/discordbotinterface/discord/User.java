@@ -3,6 +3,8 @@ package ky.fex.discordbotinterface.discord;
 import ky.fex.discordbotinterface.DBIConstants;
 import ky.fex.discordbotinterface.utils.DiscordJSONObject;
 
+import java.util.ArrayList;
+
 public class User extends DiscordJSONObject {
     public String id;
     public String username;
@@ -21,13 +23,13 @@ public class User extends DiscordJSONObject {
     public int public_flags=0;
 
     public User(String linkPart) {
-        super("users/"+linkPart);
-        if(linkPart.equals("@me")){
+        super(linkPart);
+        if(linkPart.equals("users/@me")){
             DBIConstants.properties.setProperty("botName",this.username);
         }
     }
 
-    public Channel[] getChannels(){
-        return new Channel[0];
+    public ArrayList<Guild> getGuilds(){
+        return Guild.getArray("/users/@me/guilds", Guild.class);
     }
 }

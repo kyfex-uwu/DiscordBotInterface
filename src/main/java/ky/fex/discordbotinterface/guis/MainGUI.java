@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import ky.fex.discordbotinterface.DBIConstants;
+import ky.fex.discordbotinterface.discord.Guild;
 import ky.fex.discordbotinterface.utils.DiscordHTTPRequest;
 
 public class MainGUI {
@@ -14,7 +15,10 @@ public class MainGUI {
 
     @FXML
     protected void initialize(){
-        DBIConstants.thisUser.getChannels();
+        var guilds = DBIConstants.thisUser.getGuilds();
+        for(Guild guild : guilds){
+            System.out.println(guild.name);
+        }
     }
 
     @FXML
